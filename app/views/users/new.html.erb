@@ -11,16 +11,33 @@
 
 # <input type="submit" value="Submit">
 # </form> -->
+#<!-- 
+# <%= form_tag("/users", method: "post") do %>
+#    <%=  label_tag(:username,"Username")%>
+#    <%=  text_field_tag(:username)%>
 
-<%= form_tag("/users", method: "post") do %>
-   <%=  label_tag(:username,"Username")%>
-   <%=  text_field_tag(:username)%>
+#    <%=  label_tag(:email,"Email:")%>
+#    <%=  email_field_tag(:email)%>
 
-   <%=  label_tag(:email,"Email:")%>
-   <%=  email_field_tag(:email)%>
+#    <%= label_tag(:password, "Password:")%>
+#    <%= password_field_tag(:password)%>
 
-   <%= label_tag(:password, "Password:")%>
-   <%= password_field_tag(:password)%>
-
-   <%= submit_tag("Submit")%>
+#    <%= submit_tag("Submit")%>
+# <% end %> -->
+<%= form_for @user  do |f| %>
+    <p>
+    <%=  f.label :username %>
+    <%= f.text_field :username %>
+    <p>
+    <p>
+    <%= f.label :email %>
+    <%= f.text_field :email ,value: "adamachubi@gmail.com"%>
+    </p>
+    <p>
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+    </p>
+    <p>
+    <%= f.submit %>
+    </p>
 <% end %>
