@@ -12,15 +12,35 @@
 # <input type="submit" value="Submit">
 # </form> -->
 
-<%= form_tag("/users", method: "post") do %>
-   <%=  label_tag(:username,"Username")%>
-   <%=  text_field_tag(:username)%>
+<!--<%= form_tag("/users", method: "post") do %>-->
+<!--   <%=  label_tag(:username,"Username")%>-->
+<!--   <%=  text_field_tag(:username)%>-->
 
-   <%=  label_tag(:email,"Email:")%>
-   <%=  email_field_tag(:email)%>
+<!--   <%=  label_tag(:email,"Email:")%>-->
+<!--   <%=  email_field_tag(:email)%>-->
 
-   <%= label_tag(:password, "Password:")%>
-   <%= password_field_tag(:password)%>
+<!--   <%= label_tag(:password, "Password:")%>-->
+<!--   <%= password_field_tag(:password)%>-->
 
-   <%= submit_tag("Submit")%>
-<% end %>
+<!--   <%= submit_tag("Submit")%>-->
+<!--<% end %>-->
+
+<%= form_for @user do |f| %>
+<ul>
+  <% @user.errors.full_messages.each do |error| %>
+  <li><%= error %></li>
+  <% end %>
+</ul>
+<p>
+  <%= f.label :username %> <br/>
+  <%= f.text_field :username %>
+</p>
+<p>
+  <%= f.label :email %> <br/>
+  <%= f.text_field :email, :value => "example@email.com" %>
+</p>
+<p>
+  <%= f.label :password %> <br/>
+  <%= f.password_field :password %>
+</p>
+<p><%= f.submit %></p>
